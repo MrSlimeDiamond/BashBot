@@ -54,10 +54,24 @@ exit
 fi
 if [ "$1" == "build confirm" ]; then
 	screen -dmS $irssiScreenName
+	echo -ne "*-----\r"
+	sleep 1
 	screen -S $irssiScreenName -X stuff "irssi"
+	echo -ne "**----\r"
+	sleep 1
+	screen -S $irssiScreenName -X stuff "/log start $logfile"
+	echo -ne "***---\r"
+	sleep 1
+	screen -S $irssiScreenName -X stuff "/log open -targets $channel $logfile"
+	echo -ne "****--\r"
+	sleep 1
 	screen -S $irssiScreenName -X stuff "/connect $server"
+	echo -ne "*****-\r"
+	sleep 1
 	screen -S $irssiScreenName -X stuff "/join $channel"
-	echo "Finished. Type ./bashbot.sh start to run"
+	echo -ne "******\r"
+	sleep 1
+	echo -ne "Finished. Type ./bashbot.sh start to run\r"
 	exit
 fi
 if [ "$1" == "start" ]; then
