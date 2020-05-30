@@ -9,4 +9,4 @@ nickname="bashbot" # Nickname of the IRC bot
 realname="Bash Bot" # Real name of the IRC bot
 username="bashbot" # Username of the IRC bot
 quitmessage="Shutting down" # Shutdown message
-makelckfile="true" # Prevent BashBot from being run more than once in the same folder
+makelckfile="true" # Prevent BashBot from being ran more than once in the same folder
