@@ -95,9 +95,9 @@ if [ "$1" = "confirmbuild" ]; then buildbot; fi
 
 
 	stopbot(){
-	screen -S $irssiScreenName -X stuff "/quit $quitmessage"
+	screen -S $irssiScreenName -X stuff "/quit $quitmessage\n"
 	sleep 1
-	screen -S $irssiScreenName -X stuff "exit"
+	screen -S $irssiScreenName -X stuff "exit\n"
 	}
 if [ "$1" = "start" ]; then
 
