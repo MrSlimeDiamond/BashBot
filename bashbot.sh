@@ -49,10 +49,10 @@ echo "Requirements:
 Irssi
 Screen
 It is recommended you put this on a seperate account named bashbot, because it creates files.
-Type ./bashbot.sh build confirm to continue."
+Type ./bashbot.sh confirmbuild to continue."
 exit
 fi
-if [ "$1" == "build confirm" ]; then
+if [ "$1" == "confirmbuild" ]; then
 	screen -dmS $irssiScreenName
 	echo -ne "*-----\r"
 	sleep 1
