@@ -5,6 +5,7 @@ IRC Bot using bash
 - ./bashbot.sh --option-list - List options
 - ./bashbot.sh start - Start the bot
 
+WARNING: If you use Irssi as your main IRC client and you're using the same user account, this may lead to unintended bahavior, such as nickname changes. It is recommended you give the bot its own account.
 Make sure to configure the config.sh before building.
 ## Requirements
 - Irssi
