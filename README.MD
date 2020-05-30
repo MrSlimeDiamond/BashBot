@@ -5,3 +5,4 @@
 - ./bashbot.sh --option-list - List options
 # Requirements
 - Irssi
+- Screen
