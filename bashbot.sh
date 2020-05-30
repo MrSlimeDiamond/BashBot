@@ -23,7 +23,7 @@ echo "Ignore" >> $logfile
 }
 
 trapcmds(){ # What to run when an exit is caught
-echo "Caught signal, terminating..."
+#echo "Caught signal, terminating..."
 if [ -f "$lckfile" ]; then
 	rm -f $lckfile # important if you have lckfile enabled
 fi
@@ -67,7 +67,7 @@ if [ "$1" == "confirmbuild" ]; then
 	sleep 1
 	screen -S $irssiScreenName -X stuff "/connect $server\n"
 	echo -ne "*****-\r"
-	sleep 1
+	sleep 10
 	screen -S $irssiScreenName -X stuff "/join $channel\n"
 	echo -ne "******\r"
 	sleep 1
