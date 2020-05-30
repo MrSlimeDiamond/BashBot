@@ -53,10 +53,10 @@ Type ./bashbot.sh build confirm to continue."
 exit
 fi
 if [ "$1" == "build confirm" ]; then
-	screen -dmS irssi
-	screen -S irssi -X stuff "irssi"
-	screen -S irssi -X stuff "/connect $server"
-	screen -S irssi -X stuff "/join $channel"
+	screen -dmS $irssiScreenName
+	screen -S $irssiScreenName -X stuff "irssi"
+	screen -S $irssiScreenName -X stuff "/connect $server"
+	screen -S $irssiScreenName -X stuff "/join $channel"
 	echo "Finished. Type ./bashbot.sh start to run"
 	exit
 fi
@@ -99,13 +99,5 @@ fi
 		#echo "Ignore this" >> $logfile
 	fi
 	sleep 0.1
-	evalCommand=$(cat "$logfile" | tail -1 | grep -o "\!eval$ ")
-	if [ "$evalCommand" = '!eval' ]; then
-
-		output=$($*)
-		#screen -S $irssiScreenName -X stuff "Input: $* Output: $output"
-		screen -S $irssiScreenName -X stuff "$output"
-
-	fi
 done
 fi

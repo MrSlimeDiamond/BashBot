@@ -1,2 +1,3 @@
 #!/bin/bash
-screen -S irssi -p 0 -X stuff "$*^M"
+source ./config.sh
+screen -S $irssiScreenName -p 0 -X stuff "$*^M"
