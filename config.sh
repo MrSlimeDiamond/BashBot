@@ -4,5 +4,5 @@ irssiScreenName='irssi' # Name of irssi screen
 channel="#yourchannel" # IRC Channel
 server="irc.example.com" # IRC server
 lckfile="/home/bashbot/bashbot.lck" # Lock file
-logfile="/home/bashbot/irclogs/$server/$channel" # Where irssi logs
+logfile="~/irclogs/$server/$channel" # Where irssi logs are, it's recommended you don't change this setting (:
 makelckfile="true" # Prevent BashBot from being run more than once
