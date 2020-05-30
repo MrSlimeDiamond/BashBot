@@ -65,10 +65,13 @@ if [ "$1" == "confirmbuild" ]; then
         screen -S $irssiScreenName -X stuff "/join $channel\n"
         echo -ne "****--\r"
 	sleep 1
-	screen -S $irssiScreenName -X stuff "/log start $logfile\n"
+	#screen -S $irssiScreenName -X stuff "/log start $logfile\n"
+	screen -S $irssiScreenName -X stuff "/log open -targets $channel $logfile\n"
 	echo -ne "*****-\r"
 	sleep 1
-	screen -S $irssiScreenName -X stuff "/log open -targets $channel $logfile\n"
+	#screen -S $irssiScreenName -X stuff "/log open -targets $channel $logfile\n"
+	screen -S $irssiScreenName -X stuff "/log start $logfile\n"
+	# Silly me did irssi commands the wrong way around :I
 	#echo -ne "******\r"
 	sleep 1
 	#screen -S $irssiScreenName -X stuff "/connect $server\n"
