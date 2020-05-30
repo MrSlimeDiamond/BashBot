@@ -106,7 +106,7 @@ fi
 #touch $lckfile
 while [ "$run" = 'true' ]
 do
-	sendMSG=$( cat "$logfile" |tail -1 | grep -o "\!test$" )
+	sendMSG=$( cat "$logfile_send" |tail -1 | grep -o "\!test$" )
 	if [ "$sendMSG" = '!test' ]
 	then
 		send "/msg $channel Works!"
@@ -115,7 +115,7 @@ do
 		
 fi
 	sleep 0.1
-	helpCommand=$(cat "$logfile" | tail -1 | grep -o "\!help$")
+	helpCommand=$(cat "$logfile_send" | tail -1 | grep -o "\!help$")
 	if [ "$helpCommand" = '!help' ]; then
 	send "/msg $channel Commands: !help !test " # Needs space else bot will execute command itself, idk why!	
 	#screen -S $irssiScreenName -X stuff "Commands: \!help \!test\n"
