@@ -61,8 +61,10 @@ if [ "$1" == "confirmbuild" ]; then
 	sleep 1
 	screen -S $irssiScreenName -X stuff "/connect $server\n"
         echo -ne "***---\r"
+	slerp 10
         screen -S $irssiScreenName -X stuff "/join $channel\n"
         echo -ne "****--\r"
+	sleep 1
 	screen -S $irssiScreenName -X stuff "/log start $logfile\n"
 	echo -ne "*****-\r"
 	sleep 1
