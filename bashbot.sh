@@ -1,19 +1,16 @@
 #!/bin/bash
 #logfile='/home/bashbot/irclogs/zenoc/#lobby'
 
-# Config - change this to your liking :)
+# Config is in ./config.sh :) 
 
-irssiScreenName='irssi'
-run=true
-time=$(date +%H:%M:%S)
-#log=$(echo -e "$date [LOG] $1")
-#log=$(echo -e "$(date +%H:%M:%s) [LOG] $1")
+run=true # Don't change: for while loop :)
+time=$(date +%H:%M:%S) # Format for time
+# Clients
 sendtoirc="/home/bashbot/sendtoirc.sh"
-channel="#lobby"
-server="oris.zenoc.net"
-lckfile="/home/bashbot/bashbot.lck"
-logfile="/home/bashbot/$server/$channel
-makelckfile="true"
+#config="/home/bashbot/config.sh"
+#. /home/bashbot/config.sh
+#. ./config.sh
+source config.sh
 log(){
 echo "$time [LOG] $1"
 }
@@ -25,13 +22,15 @@ log "Sending to $channel $1"
 echo "Ignore" >> $logfile
 }
 
-trapcmds(){
+trapcmds(){ # What to run when an exit is caught
 echo "Caught signal, terminating..."
-rm -f $lckfile
+if [ -f "$lckfile" ]; then
+	rm -f $lckfile # important if you have lckfile enabled
+fi
 exit
 }
 
-trap trapcmds EXIT
+trap trapcmds EXIT # When there is an exit signal, run the trapcmds function
 
 
 if [ "$1" == "" ]; then

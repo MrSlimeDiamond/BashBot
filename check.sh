@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat ~/irclogs/zenoc/\#lobby | tail -1 | grep ".*?:.*? $*"
+cat /path/to/irssi/logs/server/\#channel | tail -1 | grep ".*?:.*? $*"
