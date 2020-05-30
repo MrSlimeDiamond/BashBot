@@ -1,5 +1,8 @@
 #!/bin/bash
-logfile='/home/bashbot/irclogs/zenoc/#lobby'
+#logfile='/home/bashbot/irclogs/zenoc/#lobby'
+
+# Config - change this to your liking :)
+
 irssiScreenName='irssi'
 run=true
 time=$(date +%H:%M:%S)
@@ -9,6 +12,7 @@ sendtoirc="/home/bashbot/sendtoirc.sh"
 channel="#lobby"
 server="oris.zenoc.net"
 lckfile="/home/bashbot/bashbot.lck"
+logfile="/home/bashbot/$server/$channel
 makelckfile="true"
 log(){
 echo "$time [LOG] $1"
@@ -17,7 +21,8 @@ echo "$time [LOG] $1"
 send(){
 $sendtoirc "$1"
 log "Sending to $channel $1"
-echo "Ignore me" >> /home/bashbot/irclogs/zenoc/\#lobby
+#echo "Ignore me" >> /home/bashbot/irclogs/zenoc/\#lobby
+echo "Ignore" >> $logfile
 }
 
 trapcmds(){
