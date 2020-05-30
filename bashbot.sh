@@ -56,19 +56,19 @@ if [ "$1" == "confirmbuild" ]; then
 	screen -dmS $irssiScreenName
 	echo -ne "*-----\r"
 	sleep 1
-	screen -S $irssiScreenName -X stuff "irssi"
+	screen -S $irssiScreenName -X stuff "irssi\n"
 	echo -ne "**----\r"
 	sleep 1
-	screen -S $irssiScreenName -X stuff "/log start $logfile"
+	screen -S $irssiScreenName -X stuff "/log start $logfile\n"
 	echo -ne "***---\r"
 	sleep 1
-	screen -S $irssiScreenName -X stuff "/log open -targets $channel $logfile"
+	screen -S $irssiScreenName -X stuff "/log open -targets $channel $logfile\n"
 	echo -ne "****--\r"
 	sleep 1
-	screen -S $irssiScreenName -X stuff "/connect $server"
+	screen -S $irssiScreenName -X stuff "/connect $server\n"
 	echo -ne "*****-\r"
 	sleep 1
-	screen -S $irssiScreenName -X stuff "/join $channel"
+	screen -S $irssiScreenName -X stuff "/join $channel\n"
 	echo -ne "******\r"
 	sleep 1
 	echo -ne "Finished. Type ./bashbot.sh start to run\r"
