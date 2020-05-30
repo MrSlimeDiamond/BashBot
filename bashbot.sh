@@ -3,6 +3,7 @@
 
 # Config is in ./config.sh :) 
 
+version="1.19 beta" # Don't touch me
 run=true # Don't change: for while loop :)
 time=$(date +%H:%M:%S) # Format for time
 # Clients
@@ -27,6 +28,7 @@ trapcmds(){ # What to run when an exit is caught
 if [ -f "$lckfile" ]; then
 	rm -f $lckfile # important if you have lckfile enabled
 fi
+stopbot
 exit
 }
 
@@ -39,20 +41,25 @@ fi
 if [ "$1" == "--option-list" ]; then
 	echo "Option list:
 	start - start bot
-	build - build bot (must be done every time system reboots)
+	build - build bot - Automatically done when you start the bot in version 1.19 beta 
 	--option-list - list options"
 fi
 
 
 if [ "$1" == "build" ]; then
-echo "Requirements:
+echo "
+Note: As of version 1.19 beta, doing start will automatically build
+
+
+Requirements:
 Irssi
 Screen
 It is recommended you put this on a seperate account named bashbot, because it creates files.
 Type ./bashbot.sh confirmbuild to continue."
 exit
 fi
-if [ "$1" == "confirmbuild" ]; then
+#if [ "$1" == "confirmbuild" ]; then
+	buildbot(){
 	screen -dmS $irssiScreenName
 	echo -ne "*-----\r"
 	sleep 1
@@ -76,23 +83,34 @@ if [ "$1" == "confirmbuild" ]; then
 	sleep 1
 	#screen -S $irssiScreenName -X stuff "/connect $server\n"
 	echo -ne "******\r"
+	echo -ne "Build complete\r"
 	#sleep 1
 	#screen -S $irssiScreenName -X stuff "/join $channel\n"
 	#echo -ne "******\r"
 	#sleep 1
-	echo -ne "Finished. Type ./bashbot.sh start to run\r"
-	exit
-fi
-if [ "$1" == "start" ]; then
+	}
 
-echo -e "\e[32mWelcome to BashBot by SlimeDiamond\e[00m"
-echo -e "\e[32m$time [BashBot] Starting...\e[00m"
+#fi
+if [ "$1" = "confirmbuild" ]; then buildbot; fi
+
+
+	stopbot(){
+	screen -S $irssiScreenName -X stuff "/quit $quitmessage"
+	sleep 1
+	screen -S $irssiScreenName -X stuff "exit"
+	}
+if [ "$1" = "start" ]; then
+
+echo -e "\e[32mWelcome to BashBot by SlimeDiamond version $version\e[00m"
+echo -e "\e[32m$time [BashBot] Starting build process...\e[00m"
+buildbot
+echo "Note: Using build connects the bot to irc, start will make it respond to commands. Use the stop command to take the bot offline"
 if [ -f "$lckfile" ]; then
 	echo -e "\e[31m$time [ERROR] lckfile $lckfile exists, exiting...\e[00m"
 	echo -e "This means BashBot may already be running."
 	exit
 fi
-echo "Current date (condenced) : $time"
+echo "Current date (timestamp): $time"
 echo -e "Current date: $(date)"
 
 if [ "$makelckfile" = "true" ]; then
